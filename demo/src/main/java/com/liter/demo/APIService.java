@@ -3,11 +3,19 @@ package com.liter.demo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 @Service
 public class APIService {
     private final RestTemplate restTemplate;
     private static final String API_URL = "gutendex.com/books";
     private List<Book> favoriteBooks;
+    JsonObject json = new JsonObject();
 
     public APIService(RestTemplate restTemplate) {
 
@@ -16,7 +24,7 @@ public class APIService {
 
     public List<Book> searchBooks(String query) {
         // Build the complete URL
-        String url = API_URL + query + "&key=" + appConfig.getApiKey();
+        String url = API_URL;
 
         // Use RestTemplate to make an HTTP GET request
         String response = restTemplate.getForObject(url, String.class);
