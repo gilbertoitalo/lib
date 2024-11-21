@@ -1,9 +1,12 @@
 package com.liter.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
     private String id;
     private String title;
-    private String[] authors;
+    private List<String> authors;
     private String publisher;
     private String publishedDate;
     private String description;
@@ -16,8 +19,8 @@ public class Book {
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 
-    public String[] getAuthors() { return authors; }
-    public void setAuthors(String[] authors) { this.authors = authors; }
+    public List<String> getAuthors() { return authors; }
+    public void setAuthors(List<String> authors) { this.authors = authors; }
 
     public String getPublisher() { return publisher; }
     public void setPublisher(String publisher) { this.publisher = publisher; }
@@ -31,10 +34,14 @@ public class Book {
     public int getPageCount() { return pageCount; }
     public void setPageCount(int pageCount) { this.pageCount = pageCount; }
 
+    private List<String> safeAuthors() {
+        return authors != null ? authors : new ArrayList<>();
+    }
+
     @Override
     public String toString() {
         return "Title: " + title + "\n" +
-                "Author(s): " + String.join(", ", authors != null ? authors : new String[]{}) + "\n" +
+                "Author(s): " + String.join(", ", safeAuthors()) + "\n" +
                 "Publisher: " + publisher + "\n" +
                 "Published Date: " + publishedDate + "\n" +
                 "Pages: " + pageCount + "\n" +
