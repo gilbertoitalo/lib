@@ -38,17 +38,17 @@ public class APIService {
         return parseBookResponse(response);
     }
 
-    public List<Book> getFavorite() {
+    public List<Book> getFavoriteBooks() {
         return favoriteBooks;
     }
 
-    public void addFavorites(Book book) {
+    public void addToFavorites(Book book) {
         if (!favoriteBooks.contains(book)) {
             favoriteBooks.add(book);
         }
     }
 
-    public void removeFromFavorites(int index) {
+    public void removeFromFavorites(Book bookToRemove) {
         if (index >= 0 && index < favoriteBooks.size()) {
             favoriteBooks.remove(index);
         }
