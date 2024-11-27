@@ -143,7 +143,7 @@ public class ConsoleUI {
 
         if (choice >= 0 && choice < favorites.size()) {
             Book bookToRemove = favorites.get(choice);
-            APIService.removeFromFavorites(bookToRemove);
+            APIService.removeFromFavorites(choice);
             System.out.println("Book removed from favorites: " + bookToRemove.getTitle());
         } else {
             System.out.println("Invalid book selection.");

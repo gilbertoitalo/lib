@@ -48,7 +48,7 @@ public class APIService {
         }
     }
 
-    public void removeFromFavorites(Book bookToRemove) {
+    public void removeFromFavorites(int index) {
         if (index >= 0 && index < favoriteBooks.size()) {
             favoriteBooks.remove(index);
         }
